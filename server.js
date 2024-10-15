@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const assessmentsRoute = require('./routes/assessments');
+const storiesRoute = require('./routes/stories');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,6 +15,7 @@ app.use(bodyParser.json());  // For parsing application/json
 
 // Route for handling assessments
 app.use('/api/assessments', assessmentsRoute);
+app.use('/api/stories', storiesRoute); 
 
 // Start the server
 app.listen(port, () => {
