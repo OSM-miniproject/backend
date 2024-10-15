@@ -1,23 +1,21 @@
-// backend/server.js
-
+// server.js
+require('dotenv').config();  // Load environment variables
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
-const responsesRoutes = require('./routes/responses');
-
-dotenv.config(); // Load environment variables from .env
+const bodyParser = require('body-parser');
+const assessmentsRoute = require('./routes/assessments');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors()); // Allow cross-origin requests
-app.use(express.json()); // Parse incoming JSON requests
+// Middleware to handle CORS and parse JSON
+app.use(cors());
+app.use(bodyParser.json());  // For parsing application/json
 
-// API Routes
-app.use('/api/responses', responsesRoutes);
+// Route for handling assessments
+app.use('/api/assessments', assessmentsRoute);
 
-// Start server
+// Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
