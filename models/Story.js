@@ -1,16 +1,26 @@
 const mongoose = require('mongoose');
 
-const StorySchema = new mongoose.Schema({
+const storySchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
     },
-    description: {
+    content: {
         type: String,
         required: true,
     },
+    questions: [
+        {
+            text: {
+                type: String,
+                required: true,
+            },
+            answerType: {
+                type: String, // E.g., "text", "multiple-choice"
+                default: "text",
+            },
+        },
+    ],
 });
 
-const Story = mongoose.models.Story || mongoose.model('Story', StorySchema);
-
-module.exports = Story;  // Use CommonJS module.exports
+module.exports = mongoose.model('Story', storySchema);

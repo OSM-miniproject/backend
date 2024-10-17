@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const responseSchema = new mongoose.Schema({
-  gender: { type: String },
-  age: { type: String},
-  personality: { type: String },
-  handedness: { type: String },
+  gender: { type: String, required: true},
+  age: { type: String, required: true},
+  personality: { type: String, required: true },
+  handedness: { type: String, required: true   },
   illnessFear: { type: Number, default: 0 },
   deathFear: { type: Number, default: 0 },
   nightStartled: { type: Number, default: 0 },
