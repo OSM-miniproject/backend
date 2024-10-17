@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const connectDB = require('./db'); // Import MongoDB connection
 const assessmentsRoute = require('./routes/responses');
 const storiesRoute = require('./routes/stories');
+const contactRoute = require('./routes/contactroute');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,6 +21,7 @@ app.use(bodyParser.json());  // For parsing application/json
 // Route for handling assessments
 app.use('/api/responses', assessmentsRoute);
 app.use('/api/stories', storiesRoute); 
+app.use("/api", contactRoute);
 
 // Start the server
 app.listen(port, () => {
