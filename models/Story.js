@@ -5,6 +5,10 @@ const storySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    imageUrl: {
+        type: String,  // Store URL to the image for the story
+        required: true,
+    },
     chapters: [
         {
             chapterTitle: {
@@ -23,7 +27,7 @@ const storySchema = new mongoose.Schema({
                     },
                     answerType: {
                         type: String,
-                        default: "multiple-choice", // Default to multiple-choice, but can be adjusted later
+                        default: "multiple-choice", // Default to multiple-choice, can be adjusted later
                     },
                     options: {
                         type: [String],  // Dynamic array of options (like Yes/No or custom)
@@ -35,5 +39,4 @@ const storySchema = new mongoose.Schema({
     ],
 });
 
-// Export the model to be used in routes
 module.exports = mongoose.model('Story', storySchema);
