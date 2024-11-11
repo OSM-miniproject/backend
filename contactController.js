@@ -45,7 +45,7 @@ const contactUs = async (req, res) => {
     await sendEmail(
       email,
       "Thank you for contacting us!",
-      `Hi ${name},\n\nThank you for reaching out to us. We appreciate your interest and will get back to you shortly.\n\nBest regards,\nYour Organization`
+      `Hi ${name},\n\nThank you for reaching out to us. We appreciate your interest and will get back to you shortly.\n\nHere is a copy of the message you sent:\n\n"${message}"\n\nBest regards,\nYour Organization`
     );
 
     console.log(`Thank you email sent to ${email}`);
