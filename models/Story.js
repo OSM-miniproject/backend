@@ -6,7 +6,7 @@ const storySchema = new mongoose.Schema({
         required: true,
     },
     imageUrl: {
-        type: String,  // Store URL to the image for the story
+        type: String,  
         required: true,
     },
     chapters: [
@@ -27,11 +27,17 @@ const storySchema = new mongoose.Schema({
                     },
                     answerType: {
                         type: String,
-                        default: "multiple-choice", // Default to multiple-choice, can be adjusted later
+                        default: "multiple-choice", // Defaults to multiple-choice
                     },
                     options: {
-                        type: [String],  // Dynamic array of options (like Yes/No or custom)
-                        default: ["Yes", "No"],  // Default options, can be modified
+                        type: [String],  // Array for dynamic options
+                        validate: {
+                            validator: function(arr) {
+                                return arr.length > 0; // Ensures at least one option is present
+                            },
+                            message: "Options array cannot be empty",
+                        },
+                        default: ["Yes", "No"],  // Default options, but can be customized
                     },
                 },
             ],
