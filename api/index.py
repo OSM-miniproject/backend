@@ -1,21 +1,6 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import CORS
-from .predictions import make_prediction
+from app import app  # Import the Flask app from app.py
+from flask import Flask
 
-app = Flask(__name__)
-
-# Enable CORS for all routes and only allow the frontend origin
-CORS(app, origins=["http://localhost:3000"])
-
-@app.route('/predict', methods=['POST'])
-def predict():
-    try:
-        data = request.get_json()
-        input_data = pd.DataFrame([data])  # Convert the input data to a DataFrame
-        result = make_prediction(input_data)  # Run prediction
-        return jsonify({'prediction': result})  # Return the prediction result as JSON
-    except Exception as e:
-        return jsonify({'error': str(e)}), 400
-
+# Entry point to start the Flask app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
