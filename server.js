@@ -9,7 +9,7 @@ const storiesRoute = require('./routes/stories');
 const contactRoute = require('./routes/contactroute');
 const resultRouter = require('./routes/result');
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 7000;
 
 // Connect to MongoDB
 connectDB()
