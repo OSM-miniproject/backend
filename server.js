@@ -7,7 +7,7 @@ const connectDB = require('./db');
 const assessmentsRoute = require('./routes/responses');
 const storiesRoute = require('./routes/stories');
 const contactRoute = require('./routes/contactroute');
-
+const resultRouter = require('./routes/result');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -27,6 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/api/resultstorage',resultRouter);
 app.use('/api/responses', assessmentsRoute);
 app.use('/api/stories', storiesRoute); 
 app.use("/api", contactRoute);
