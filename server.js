@@ -7,8 +7,8 @@ const connectDB = require('./db');
 const assessmentsRoute = require('./routes/responses');
 const storiesRoute = require('./routes/stories');
 const contactRoute = require('./routes/contactroute');
-const resultRouter = require('./routes/result');
 const therapiesRoute = require('./routes/therapy');
+const resultRoutes = require('./routes/resultRoutes');
 const app = express();
 const port = process.env.PORT || 7000;
 
@@ -28,11 +28,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api/resultstorage',resultRouter);
+app.use('/api/resultstorage', resultRoutes);
 app.use('/api/responses', assessmentsRoute);
 app.use('/api/stories', storiesRoute); 
 app.use("/api", contactRoute);
-app.use('/api/therapies', therapiesRoute);
+app.use('/api/therapy', therapiesRoute);
 
 // Catch-all route for debugging
 app.use('*', (req, res) => {
