@@ -8,6 +8,7 @@ const assessmentsRoute = require('./routes/responses');
 const storiesRoute = require('./routes/stories');
 const contactRoute = require('./routes/contactroute');
 const resultRouter = require('./routes/result');
+const therapiesRoute = require('./routes/therapy');
 const app = express();
 const port = process.env.PORT || 7000;
 
@@ -31,6 +32,7 @@ app.use('/api/resultstorage',resultRouter);
 app.use('/api/responses', assessmentsRoute);
 app.use('/api/stories', storiesRoute); 
 app.use("/api", contactRoute);
+app.use('/api/therapies', therapiesRoute);
 
 // Catch-all route for debugging
 app.use('*', (req, res) => {
@@ -51,3 +53,7 @@ app.listen(port, () => {
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Rejection at:', promise, 'reason:', reason);
 });
+
+
+
+
